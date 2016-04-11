@@ -35,11 +35,10 @@
         <link rel="stylesheet" href="css/bootstrap.min.css">
     </head>
 
-    <body>    
+    <body ng-controller="directiveController">
         <!-- Insert your HTML here -->
-        <div class="container tableHelper" ng-controller="directiveController">
-            <table-helper data="getCustomers()" map="getMapping()"></table-helper>
-        </div>
+        
+        <table-helper data="getCustomers()" map="getMapping()"></table-helper>
         <!-- Scripts -->
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
         <script src="js/angular.min.js"></script>

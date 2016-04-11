@@ -1,59 +1,59 @@
-(function(){
+(function() {
     var link = function(scope, elem, attrs) {
         var openTableTag = '<table class="table">';
         var closeTableTag = '</table>';
         var headerCols = [];
         var table = '';
-        
+
         scope.$watchCollection(scope.data, render);
-        
-        
+
         function render() {
             if (scope.data && scope.data.length) {
                 table += openTableTag;
                 table += renderHeader();
 //                table += renderRows();
                 table += closeTableTag;
-                
+
                 renderTable();
             }
         }
-        
+
         function renderHeader() {
             var openThTag = '<th>';
             var closeThTag = '</th>';
-            var header = '';
-            
+            var headerRow = '';
+
             var openRowTag = '<tr>';
             var closeRowTag = '</tr>';
-            var headerRow = '';
-            
-            header += openThTag;
-            
+            var header = '';
+
+            headerRow += openRowTag;
+
             for (index in scope.map) {
-                headerRow = '';
-                
+                header = '';
+
                 if (!scope.map[index]['hidden']) {
-                    headerRow += openRowTag;
-//                    console.log("field:" + scope.map[index][Object.keys(scope.map[index])[0]]);
-                    headerRow += scope.map[index][Object.keys(scope.map[index])[0]];
-                    headerRow += closeRowTag;
-                    header += headerRow;
-                }                
-                
-//                console.log(headerRow);
+                    header += openThTag;
+                    header += scope.map[index][Object.keys(scope.map[index])[0]];
+                    header += closeThTag;
+                    headerRow += header;
+                }
             }
-            header += closeThTag;
-            
-            console.log(header);
-            return header;
+            headerRow += closeRowTag;
+
+            return headerRow;
         }
-        
+
+//        function renderRows() {
+//
+//        }
+
         function renderTable() {
             elem.html(table);
         }
     };
-    var templateUrl = 'view/tableTemplate.html';
+
+    var templateUrl = '/view/tableTemplate.html';
     var tableHelper = function() {
         return {
             restrict: 'E',
@@ -61,10 +61,11 @@
                 data: '=',
                 map: '='
             },
+            replace: true,
             templateUrl: templateUrl,
             link: link
         };
     };
-    
+
     angular.module('tableHelperModule').directive('tableHelper', tableHelper);
 })();

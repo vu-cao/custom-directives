@@ -26,7 +26,7 @@
             address: 'Postal Address',
             hidden: true
         }, {
-            age: 'age'
+            Age: 'age'
         }];
         $scope.getCustomers = function() {
             return customers;

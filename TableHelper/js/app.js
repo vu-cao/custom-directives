@@ -18,21 +18,9 @@
             address: '11 ABC St, Riverwood',
             age: 37
         }];
-        var mapping = [{
-            firstName: 'First Name'
-        }, {
-            lastName: 'Last Name'
-        }, {
-            address: 'Postal Address',
-            hidden: true
-        }, {
-            Age: 'age'
-        }];
+
         $scope.getCustomers = function() {
             return customers;
-        };
-        $scope.getMapping = function() {
-            return mapping;
         };
     };
 

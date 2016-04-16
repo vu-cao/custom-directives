@@ -7,7 +7,7 @@
         var colNames = getColumnNames();
         var sortDir = 1;
         var sortCol = '';
-        
+
         scope.$watchCollection(scope.data, render);
         wireEvents();
 

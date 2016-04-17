@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="tableHelperModule">
+<html ng-app="delayBindModule">
 	<head>
         <meta charset="utf-8">        
         <meta name="author" content="CHANGE-ME">
@@ -30,21 +30,26 @@
         
         <link rel="shortcut icon" href="favicon.ico">
         
-        <title>Table Helper Directives</title>
+        <title>CHANGE-ME</title>
         <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/tableHelper.css">
+        <link rel="stylesheet" href="style/bootstrap.min.css">
+        
     </head>
 
-    <body ng-controller="directiveController">
+    <body>    
         <!-- Insert your HTML here -->
-        <div class="container">
-            <table-helper ng-model="customers" map="[{firstName: 'First Name'}, {lastName: 'Last Name'}, {address: 'Postal Address', hidden: true}, {age: 'Age'}]"></table-helper>
+        <div class="container" ng-controller="directiveController">
+            <ul>
+                <li ng-repeat="customer in customers" delay-bind="{{::customer.age}}" trigger="mouseover" attribute="age">
+                    <a delay-bind="{{::customer.url}}" trigger="mouseover" attribute="href">{{ customer.firstName + ' ' + customer.lastName}}</a>
+                </li>
+            </ul>
+            <delay-bind ng-model=""></delay-bind>
         </div>
         <!-- Scripts -->
-        <script src="js/angular.min.js"></script>
+        <script src="js/angular.js"></script>
         <script src="js/app.js"></script>
-        <script src="js/directives/tableHelper.js"></script>
-        
+        <script src="js/controller/directiveController.js"></script>
+        <script src="js/directives/delayBind.js"></script>
     </body>
 </html>

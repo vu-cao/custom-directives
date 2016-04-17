@@ -34,13 +34,16 @@
                 });
                 render();
             }
-            elem.on('click', 'table.table thead tr th', function(event) {
-                var propertyName = getRawColumnName($(this).html());
-                if (propertyName === sortCol) {
-                    sortDir = sortDir * -1;    
+            elem.on('click', function(event) {
+                if (event.srcElement.nodeName === 'TH') {
+                    var val = event.srcElement.innerHTML;
+                    var propertyName = getRawColumnName(val);
+                    if (propertyName === sortCol) {
+                        sortDir = sortDir * -1;    
+                    }
+                    sortCol = propertyName;
+                    sort(propertyName, sortDir);
                 }
-                sortCol = propertyName;
-                sort(propertyName, sortDir);
             });
         }
 

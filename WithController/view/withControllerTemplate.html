@@ -1,0 +1,17 @@
+<p>
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" placeholder="Enter first name" class="" id="firstName" ng-model="firstName"/>
+    </div>
+    <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" placeholder="Enter last name" class="" id="lastName" ng-model="lastName"/>
+    </div>
+    <button id="add" class="btn btn-default" ng-click="addCustomer()">Add customer</button>
+    
+    <div id="list">
+        <ul>
+            <li ng-repeat="customer in customers">{{ customer.firstName + ' ' + customer.lastName }}</li>
+        </ul>
+    </div>
+</p>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="delayBindModule">
+<html>
 	<head>
         <meta charset="utf-8">        
         <meta name="author" content="CHANGE-ME">
@@ -32,24 +32,26 @@
         
         <title>CHANGE-ME</title>
         <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="style/bootstrap.min.css">
         
     </head>
 
-    <body>    
+    <body ng-app="customerModule">    
         <!-- Insert your HTML here -->
-        <div class="container" ng-controller="directiveController">
+        <div class="container" ng-controller="customerController">
+            <h1>Without Controller</h1>
             <ul>
-                <li ng-repeat="customer in customers" delay-bind="{{::customer.age}}" trigger="mouseover" attribute="age">
-                    <a delay-bind="{{::customer.url}}" trigger="mouseover" attribute="href">{{ customer.firstName + ' ' + customer.lastName}}</a>
-                </li>
+                <li ng-repeat="customer in customers">{{ customer.firstName + ' ' + customer.lastName }}</li>
             </ul>
-            <delay-bind ng-model=""></delay-bind>
+            <without-controller data="customers" add="addCustomer"></without-controller>
+            <h1>With Controller</h1>
+            <with-controller data="customers" add="addCustomer"></with-controller>
         </div>
+        
         <!-- Scripts -->
         <script src="js/angular.min.js"></script>
         <script src="js/app.js"></script>
-        <script src="js/controller/directiveController.js"></script>
-        <script src="js/directives/delayBind.js"></script>
+        <script src="js/controller/customerController.js"></script>
+        <script src="js/directive/withoutController.js"></script>
+        <script src="js/directive/withController.js"></script>
     </body>
 </html>

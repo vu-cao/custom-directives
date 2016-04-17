@@ -1,0 +1,68 @@
+(function () {
+    var withoutController = function () {
+        var templateUrl = 'view/withoutControllerTemplate.html';
+        
+        var link = function (scope, elem, attrs) {
+            var data = angular.copy(scope.data);
+            var button = angular.element(document.getElementById('add'));
+            var firstName = angular.element(document.getElementById('firstName'));
+            var lastName = angular.element(document.getElementById('lastName'));
+            var table = angular.element(document.getElementById('list'));
+            render();
+            
+            firstName.on('input propertychange paste', function (event) {
+                if (firstName.val()) {
+                    button.removeAttr('disabled');
+                } else {
+                    button.attr('disabled', 'disabled');
+                }
+            });
+            lastName.on('input propertychange paste', function (event) {
+                if (lastName.val()) {
+                    button.removeAttr('disabled');
+                } else {
+                    button.attr('disabled', 'disabled');
+                }
+            });
+            
+            button.on('click', function (event) {
+                var customer = {
+                        firstName: firstName.val(),
+                        lastName: lastName.val()
+                };
+                scope.$apply(function () {
+                    scope.add()(customer);
+                });
+                data.push(customer);
+                render();
+            });
+            
+            function render () {
+                if (data && data.length) {
+                    var openUlTag = '<ul>';
+                    var closeUlTag = '</ul>';
+                    var openLiTag = '<li>';
+                    var closeLiTag = '</li>';
+                    
+                    var html = '';
+                    html = data.reduce(function (previousValue, currentValue, curentIndex, array) {
+                        return previousValue.concat(openLiTag, currentValue.firstName, ' ', currentValue.lastName, closeLiTag);
+                    }, html);
+                    
+                    table.html(openUlTag + html + closeUlTag);
+                }
+            }
+        };
+        
+        return {
+            restrict: 'E',
+            templateUrl: templateUrl,
+            scope: {
+                data: '=',
+                add: '&'
+            },
+            link: link
+        }
+    };
+    angular.module('customerModule').directive('withoutController', withoutController);
+})();

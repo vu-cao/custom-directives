@@ -1,26 +1,25 @@
 (function () {
-    var customerController = function ($scope) {
+    var customersController = function ($scope) {
         $scope.customers = [{
             firstName: 'Vu',
             lastName: 'Cao',
             address: '5 Pyramid Ave, Padstow',
-            age: 37
+            age: 37,
+            url: 'http://vu.cao'
         }, {
             firstName: 'Henry',
             lastName: 'Truong',
             address: '36 Wilkins St, Yagoona',
-            age: 33
+            age: 33,
+            url: 'http://henry.truong'
         }, {
             firstName: 'Phi',
             lastName: 'Lai',
             address: '11 ABC St, Riverwood',
-            age: 37
+            age: 37,
+            url: 'http://phi.lai'
         }];
-        
-        $scope.addCustomer = function (customer) {
-            $scope.customers.push(customer);
-        };
-    }
-    customerController.$inject = ['$scope'];
-    angular.module('customerModule').controller('customerController', customerController);
+    };
+    directiveController.$inject = ['$scope'];
+    angular.module('customerModule').controller('customersController', customersController);
 })();

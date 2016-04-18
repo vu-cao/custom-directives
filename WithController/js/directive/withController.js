@@ -15,6 +15,7 @@
             };
             var init = function () {
                 $scope.customers = angular.copy($scope.data);
+                console.log($scope.add);
             };
             
             init();

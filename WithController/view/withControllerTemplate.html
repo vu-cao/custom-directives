@@ -7,7 +7,7 @@
         <label for="lastName">Last Name</label>
         <input type="text" placeholder="Enter last name" class="" id="lastName" ng-model="lastName"/>
     </div>
-    <button id="add" class="btn btn-default" ng-click="addCustomer()">Add customer</button>
+    <button id="add" class="btn btn-default" ng-click="addCustomer()" ng-disabled="!firstName && !lastName">Add customer</button>
     
     <div id="list">
         <ul>
